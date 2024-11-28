@@ -5,7 +5,7 @@ import base64
 
 # Creating a DynamoDB connection
 dynamodb = boto3.resource('dynamodb')
-table_name = 'your_table_name'
+table_name = 'my_table'
 table = dynamodb.Table(table_name)
 
 def lambda_handler(event, context):

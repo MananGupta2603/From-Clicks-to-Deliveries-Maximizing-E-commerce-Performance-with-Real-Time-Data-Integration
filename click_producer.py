@@ -36,7 +36,7 @@ def lambda_handler(event, context):
             )
 
             print(f"Sent data to Kinesis: {payload}")
-            print(f"Kinesis Response: {response}")
+            # print(f"Kinesis Response: {response}")
 
         # Return a success message after processing
         return {
