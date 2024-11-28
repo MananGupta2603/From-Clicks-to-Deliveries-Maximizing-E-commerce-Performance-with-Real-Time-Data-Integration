@@ -1,51 +1,52 @@
 import boto3
 import json
 import random
-import time
 from datetime import datetime
 
-# Creating a session for Kinesis
-session = boto3.Session(
-    aws_access_key_id='your_access_key_id',
-    aws_secret_access_key='your_secret_key',
-    region_name='your_region'
-)
+# Initialize the Kinesis client
+kinesis_client = boto3.client('kinesis')
 
-client = session.client('kinesis')
-
-# Sample data to stimulate live stream
+# Sample product data
 products = [
-    {"Item_ID" : 'C1',
-    "Item_Name" : "Canon EOS R5"},
-    {"Item_ID" : 'C2',
-    "Item_Name" : "Nikon Z7 II"},
-    {"Item_ID" : 'M1',
-    "Item_Name" : "Apple IPhone 14 Pro"},
-    {"Item_ID" : 'M2',
-    "Item_Name" : "Samsung Galaxy S23 Ultra"},
-    {"Item_ID" : 'L1',
-    "Item_Name" : "Dell XPS 13"}, 
-    {"Item_ID" : 'L2',
-    "Item_Name" : "Apple MacBook Air M2 2022"}
+    {"Item_ID": 'C1', "Item_Name": "Canon EOS R5"},
+    {"Item_ID": 'C2', "Item_Name": "Nikon Z7 II"},
+    {"Item_ID": 'M1', "Item_Name": "Apple iPhone 14 Pro"},
+    {"Item_ID": 'M2', "Item_Name": "Samsung Galaxy S23 Ultra"},
+    {"Item_ID": 'L1', "Item_Name": "Dell XPS 13"},
+    {"Item_ID": 'L2', "Item_Name": "Apple MacBook Air M2 2022"},
 ]
 
-# Adding click counts and timestamp to data
-while True:
-    for product in products:
-        Click_Counts = random.randint(10,100)
-        payload = {
-            "Item_ID" : product["Item_ID"],
-            "Item_Name" : product["Item_Name"],
-            "Click_Counts" : Click_Counts,
-            "Timestamp": datetime.now().isoformat()
+def lambda_handler(event, context):
+    try:
+        # Generate and send clickstream data for each product
+        for product in products:
+            click_counts = random.randint(10, 100)
+            payload = {
+                "Item_ID": product["Item_ID"],
+                "Item_Name": product["Item_Name"],
+                "Click_Counts": click_counts,
+                "Timestamp": datetime.now().isoformat(),
+            }
+
+            # Send data to the Kinesis stream
+            response = kinesis_client.put_record(
+                StreamName='Kinesis_stream_name',  
+                PartitionKey=product["Item_ID"], 
+                Data=json.dumps(payload)          
+            )
+
+            print(f"Sent data to Kinesis: {payload}")
+            print(f"Kinesis Response: {response}")
+
+        # Return a success message after processing
+        return {
+            "statusCode": 200,
+            "body": json.dumps({"message": "Clickstream data sent to Kinesis"})
         }
-        
-        # streaming the data into kinesis
-        response = client.put_record(
-            StreamName = 'Kinesis_stream_name',
-            StreamARN = 'Kinesis_stream_ARN',
-            PartitionKey = 'Item_ID',
-            Data = json.dumps(payload).encode('utf-8')
-        )
-        
-        print(f'Sent data to Kinesis: {payload}')
+
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"message": "Failed to send data", "error": str(e)})
+        }
