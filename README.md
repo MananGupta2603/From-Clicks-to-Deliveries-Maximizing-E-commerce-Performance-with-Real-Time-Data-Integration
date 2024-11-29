@@ -38,7 +38,6 @@ Simultaneously, we must monitor and analyze real-time telemetry data from our fl
 **[All data used here are random and simulated using the Python file [trucks.py](trucks.py)]**
 
 ### Workflow :
-
+![](image.gif)
 - The Clickstream data is collected in realtime using AWS Kinesis and sent to a Lambda function to process and store the data in DynamoDB
 - The Truck IOT data is collected once every 1 minute, posted to an API which triggers a Lambda function and stores the data in DynamoDB
-![](image.gif)
