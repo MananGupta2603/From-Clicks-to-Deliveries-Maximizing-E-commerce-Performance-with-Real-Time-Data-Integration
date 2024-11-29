@@ -26,14 +26,14 @@ Simultaneously, we must monitor and analyze real-time telemetry data from our fl
 
 **For 3 truck in the fleet, the following data will be collected in near real-time(the trucks are sending the data every 1 minute):*?*
 
-- Truck ID : should have 3 truck id’s
-- GPS Location: Latitude, Longitude, Altitude, Speed.
-- Vehicle Speed: Real-time speed of the vehicle.
-- Engine Diagnostics: Engine RPM, Fuel Level, Temperature, Oil Pressure, Battery Voltage.
-- Odometer Reading: Total distance traveled.
-- Fuel Consumption: Fuel usage over time.
-- Vehicle Health and Maintenance: Brake status, Tire pressure, Transmission status.
-- Environmental Conditions: Temperature, Humidity, Atmospheric Pressure.
+- **Truck ID :** should have 3 truck id’s
+- **GPS Location:** Latitude, Longitude, Altitude, Speed.
+- **Vehicle Speed:** Real-time speed of the vehicle.
+- **Engine Diagnostics:** Engine RPM, Fuel Level, Temperature, Oil Pressure, Battery Voltage.
+- **Odometer Reading:** Total distance traveled.
+- **Fuel Consumption:** Fuel usage over time.
+- **Vehicle Health and Maintenance:** Brake status, Tire pressure, Transmission status.
+- **Environmental Conditions:** Temperature, Humidity, Atmospheric Pressure.
 
 **[All data used here are random and simulated using the Python file [trucks.py](trucks.py)]**
 
