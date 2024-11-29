@@ -19,7 +19,7 @@ We need to analyze clickstream data to understand customer preferences, enhance 
    - Item Name
    - Click Count
 
-[All data used here are random and simulated using the Python file click_producer.py]
+[All data used here are random and simulated using the Python file [click_producer.py](click_producer.py)]
 
 Fleet Management and Logistics Optimization :
 Simultaneously, we must monitor and analyze real-time telemetry data from our fleet of delivery trucks, utilizing IoT sensors installed in each vehicle. This data will enable us to optimize routes, reduce fuel consumption, proactively address maintenance issues, and ensure the safety and reliability of our delivery operations.
