@@ -35,7 +35,7 @@ Simultaneously, we must monitor and analyze real-time telemetry data from our fl
 - Vehicle Health and Maintenance: Brake status, Tire pressure, Transmission status.
 - Environmental Conditions: Temperature, Humidity, Atmospheric Pressure.
 
-**[All data used here are random and simulated using the Python file [truck.py](truck.py)]**
+**[All data used here are random and simulated using the Python file [trucks.py](trucks.py)]**
 
 ### Workflow :
 
