@@ -19,25 +19,26 @@ We need to analyze clickstream data to understand customer preferences, enhance 
    - Item Name
    - Click Count
 
-[All data used here are random and simulated using the Python file [click_producer.py](click_producer.py)]
+**[All data used here are random and simulated using the Python file [click_producer.py](click_producer.py)]**
 
-Fleet Management and Logistics Optimization :
+## Fleet Management and Logistics Optimization :
 Simultaneously, we must monitor and analyze real-time telemetry data from our fleet of delivery trucks, utilizing IoT sensors installed in each vehicle. This data will enable us to optimize routes, reduce fuel consumption, proactively address maintenance issues, and ensure the safety and reliability of our delivery operations.
 
-For 3 truck in the fleet, the following data will be collected in near real-time(the trucks are sending the data every 1 minute):
+**For 3 truck in the fleet, the following data will be collected in near real-time(the trucks are sending the data every 1 minute):*?*
 
-Truck ID : should have 3 truck id’s
-GPS Location: Latitude, Longitude, Altitude, Speed.
-Vehicle Speed: Real-time speed of the vehicle.
-Engine Diagnostics: Engine RPM, Fuel Level, Temperature, Oil Pressure, Battery Voltage.
-Odometer Reading: Total distance traveled.
-Fuel Consumption: Fuel usage over time.
-Vehicle Health and Maintenance: Brake status, Tire pressure, Transmission status.
-Environmental Conditions: Temperature, Humidity, Atmospheric Pressure.
-[All data used here are random and simulated using the Python file [click_producer.py]()]
+- Truck ID : should have 3 truck id’s
+- GPS Location: Latitude, Longitude, Altitude, Speed.
+- Vehicle Speed: Real-time speed of the vehicle.
+- Engine Diagnostics: Engine RPM, Fuel Level, Temperature, Oil Pressure, Battery Voltage.
+- Odometer Reading: Total distance traveled.
+- Fuel Consumption: Fuel usage over time.
+- Vehicle Health and Maintenance: Brake status, Tire pressure, Transmission status.
+- Environmental Conditions: Temperature, Humidity, Atmospheric Pressure.
 
-Workflow :
+**[All data used here are random and simulated using the Python file [click_producer.py](click_producer.py)]**
 
-The Clickstream data is collected in realtime using AWS Kinesis and sent to a Lambda function to process and store the data in DynamoDB
-The Truck IOT data is collected once every 1 minute, posted to an API which triggers a Lambda function and stores the data in DynamoDB
+### Workflow :
+
+- The Clickstream data is collected in realtime using AWS Kinesis and sent to a Lambda function to process and store the data in DynamoDB
+- The Truck IOT data is collected once every 1 minute, posted to an API which triggers a Lambda function and stores the data in DynamoDB
 ![](image.gif)
